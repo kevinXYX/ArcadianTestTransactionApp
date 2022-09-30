@@ -25,7 +25,7 @@ export class TransactionService {
       );
   }
 
-  public getTransactionById(transactionId: number): Observable<Transaction> {
+  public getTransactionById(transactionId: Number): Observable<Transaction> {
     return this.http.get<Transaction>(this.apiUrls.GetTransactionById.replace('$id', transactionId.toString()))
       .pipe(
         catchError(this.handleError<Transaction>('getTransactionById', <Transaction>{}))
@@ -41,8 +41,8 @@ export class TransactionService {
 
   private handleError<T>(operation: string, result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); 
-      return of(result as T);
+      console.log(error); 
+      return error;
     };
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction-service';
 
@@ -9,12 +9,13 @@ import { TransactionService } from '../../services/transaction-service';
 })
 export class TransactionViewComponent {
   transaction: Transaction = <Transaction>{};
-  constructor(private route: ActivatedRoute, private transactionService: TransactionService) {
+  constructor(private route: ActivatedRoute, private router: Router, private transactionService: TransactionService) {
     this.route.params.subscribe(params => {
-      this.transactionService.getTransactionById(params.id).subscribe((transaction) => {
-        this.transaction = transaction;
-        console.log(this.transaction);
-      });
+      this.transactionService.getTransactionById(params.id).subscribe({
+        next: (transaction: Transaction) => { this.transaction = transaction },
+        error: (error: any) => { this.router.navigate(['/']) },
+        complete: () => { }
+      })
     });
   }
 }
