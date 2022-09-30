@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Transaction View</h3>
+  <div class="mb-2">
+    <label class="form-label">Tranasction Id: {{transaction.transactionId}}</label>
+  </div>
+  <div class="mb-2">
+    <label class="form-label">Tranasction name: {{transaction.transactionName}}</label>
+  </div>
+  <div class="mb-2">
+    <label class="form-label">Tranasction cost: {{transaction.transactionCost}}</label>
+  </div>
+  <div class="mb-2">
+    <label class="form-label">Tranasction date: {{transaction.transactionDate | date: 'medium'}}</label>
+  </div>
+  <div class="mb-2">
+    <button type="button" class="btn btn-secondary" routerLink="/">Back</button>
+  </div>
+</div>

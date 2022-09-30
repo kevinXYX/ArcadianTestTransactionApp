@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Create Transaction</h3>
+  <div class="mb-2">
+    <label class="form-label">Transaction name: </label>
+    <input type="text" [class.invalid-field]="validationError && transaction.transactionName === ''" class="form-control w-25" [(ngModel)]="transaction.transactionName">
+  </div>
+  <div class="mb-2">
+    <label class="form-label">Transaction cost: </label>
+    <input type="number" [class.invalid-field]="validationError && transaction.transactionCost === 0" class="form-control w-25" [(ngModel)]="transaction.transactionCost">
+  </div>
+  <div class="mb-2">
+    <div class="row w-25">
+      <div class="col">
+        <button type="button" class="btn btn-secondary ml-2" routerLink="/">Back</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-success" (click)="createTransaction()">Create</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h3>Transactions</h3>
+  <button (click)="createTransaction()" type="button" class="btn btn-success">Create</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Transaction Name</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.transactionId}}</td>
+        <td>{{transaction.transactionName}}</td>
+        <td>{{transaction.transactionCost}}</td>
+        <td>{{transaction.transactionDate | date:'medium'}}</td>
+        <td><button (click)="viewTransaction(transaction.transactionId)" type="button" class="btn btn-primary">View</button></td>
+      </tr>
+    </tbody>
+  </table>
